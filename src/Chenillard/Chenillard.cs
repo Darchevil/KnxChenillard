@@ -1,10 +1,12 @@
-﻿using System;
+﻿using KNXLib;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
-using KNXLib;
 using System.Threading;
+using System.Threading.Tasks;
 
-namespace ChenillardIot
+namespace ChenillardIotOfficial.ChenillardIot
 {
     class Chenillard
     {
@@ -23,19 +25,21 @@ namespace ChenillardIot
             this.isActive = true;
             while (i < 3)
             {
-                
-                client.Action("1/0/3", false);
-                client.Action("1/0/0", true);
+
                 Thread.Sleep(700); //Attention, ne doit pas être en dessous de 500ms.
-                client.Action("1/0/0", false);
-                client.Action("1/0/1", true);
+                client.Action("0/1/1", true);
+                Thread.Sleep(700); //Attention, ne doit pas être en dessous de 500ms.
+                client.Action("0/1/1", false);
+                client.Action("0/1/2", true);
+                Thread.Sleep(700); //Attention, ne doit pas être en dessous de 500ms.
+                client.Action("0/1/2", false);
+                client.Action("0/1/3", true);
+                Thread.Sleep(700); //Attention, ne doit pas être en dessous de 500ms.
+                client.Action("0/1/3", false);
+                client.Action("0/1/4", true);
                 Thread.Sleep(700);
-                client.Action("1/0/1", false);
-                client.Action("1/0/2", true);
-                Thread.Sleep(700);
-                client.Action("1/0/2", false);
-                client.Action("1/0/3", true);
-                Thread.Sleep(700);
+                client.Action("0/1/4", false);
+                client.Action("0/1/1", true);
                 i++;
             }
         }
