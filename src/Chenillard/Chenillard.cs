@@ -47,5 +47,15 @@ namespace ChenillardIotOfficial.ChenillardIot
         {
             this.isActive = false;
         }
+        public void TestMaquette()
+        {
+            client.Action("0/1/1", true);
+            Thread.Sleep(600);
+            client.Action("0/1/1", false);
+
+            client.Action("0/1/4", true);
+            Thread.Sleep(600);
+            client.Action("0/1/4", false);
+        }
     }
 }
