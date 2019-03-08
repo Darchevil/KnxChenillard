@@ -16,16 +16,63 @@ namespace ChenillardIotOfficial
 
         static void Main(string[] args)
         {
-            //Connection to the KNX 
-            //KnxConnectionTunneling Client;
-            //Client = connectToChenillard();
-            //Chenillard chenillard = new Chenillard(Client);
+            int speedCmd = 500;
+            string LED = null;
+            string command = null;
+            Boolean loopContinue = true;
 
             Console.WriteLine("Connected !");
-            //Chenillard chenillard = new Chenillard(Client);
-            
-            chenillard.StartChenillard();
-            //chenillard.TestMaquette();
+
+            while (true && loopContinue == true)
+            {
+                Console.WriteLine($@"Welcome ! Choose your Action :
+                      [V] : Start chenillard
+                      [C] : stop chenillard
+                      [S] : Choose Speed 
+                      [O] : Change Order 
+                      Actual speed : " + chenillard.speed);
+
+                command = Console.ReadLine();
+                switch (command)
+                {
+                    case "V":
+                        chenillard.StartChenillard();
+                        break;
+                    case "C":
+                        chenillard.StopChenillard();
+                        break;
+                    case "S":
+                        Console.WriteLine("Choose Your Speed in ms (minimum 500) :");
+                        speedCmd = Convert.ToInt32(Console.ReadLine());
+                        chenillard.speed = speedCmd;
+                        break;
+                    case "O":
+                        Console.WriteLine("Choose Order : ");
+                        Console.WriteLine("LED1 :");
+                        LED = Console.ReadLine();
+                        chenillard.Led1 = LED;
+                        Console.WriteLine("LED2 :");
+                        LED = Console.ReadLine();
+                        chenillard.Led2 = LED;
+                        Console.WriteLine("LED3 :");
+                        LED = Console.ReadLine();
+                        chenillard.Led3 = LED;
+                        Console.WriteLine("LED4 :");
+                        LED = Console.ReadLine();
+                        chenillard.Led4 = LED;
+
+                        chenillard.changeOrder();
+                        break;
+
+                    case "Q":
+                        Console.WriteLine("Exiting....");
+                        loopContinue = false;
+                        break;
+
+                }
+            }
+
+            Console.WriteLine("End... Press a Key to disconnect...");
 
             Console.ReadLine();
 
