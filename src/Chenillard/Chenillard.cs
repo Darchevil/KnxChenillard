@@ -30,13 +30,16 @@ namespace ChenillardIotOfficial.ChenillardIot
 
         public void StartChenillard()
         {
+            Console.WriteLine("chenillard starting....");
             ThreadStart threadStart = new ThreadStart(GoChenillard);
             Thread threadChenillard = new Thread(threadStart);
+            threadChenillard.Start();
             this.isActive = true;
 
         }
         public void GoChenillard()
         {
+            Console.WriteLine("Go !");
             int i = 0;
 
             while (isActive == true)
@@ -45,22 +48,14 @@ namespace ChenillardIotOfficial.ChenillardIot
                 {
                     i = 0;
                 }
-                //Thread.Sleep(700); //Attention, ne doit pas être en dessous de 500ms.
+                client.Action(arrayLed[i], true);
+                Thread.Sleep(speed);
                 client.Action(arrayLed[i], false);
                 i++;
                 client.Action(arrayLed[i], true);
                 Thread.Sleep(speed); //Attention, ne doit pas être en dessous de 500ms.
-                
-                 //Attention, ne doit pas être en dessous de 500ms.
-                //client.Action("0/1/2", false);
-                //client.Action("0/1/3", true);
-                //Thread.Sleep(700); //Attention, ne doit pas être en dessous de 500ms.
-                //client.Action("0/1/3", false);
-                //client.Action("0/1/4", true);
-                //Thread.Sleep(700);
-                //client.Action("0/1/4", false);
-                //client.Action("0/1/1", true);
-                //i++;
+                client.Action(arrayLed[i], false);
+                i++;
             }
         }
         public void StopChenillard()
