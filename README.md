@@ -19,4 +19,10 @@ The Ip Addresses is  : 192.168.0.5 for maquette 1
 Group Addresses Lamps: 0/1/1 (lampe1); 0/1/2 (lampe2); 0/1/3 (lampe3); 0/1/4(lampe4)
 Group Addresses Buttons : 0/3/1 (button1); 0/3/2 (button2); 0/3/3 (button3); 0/3/4 (button4)
 
+## Comment démarrer le serveur 
+Installer Visual studio
+Importer le projet 
+depuis visual Studio, lancer le projet avec IIS.
+
+
 
