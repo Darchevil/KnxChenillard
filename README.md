@@ -22,7 +22,7 @@ Group Addresses Buttons : 0/3/1 (button1); 0/3/2 (button2); 0/3/3 (button3); 0/3
 
 ## How to use the project :
 
-### for the low level application : 
+### for the Console Application : 
 
 clone the repository
 
@@ -93,7 +93,22 @@ run the client
 ng serve --open
 ```
 
+## The Console Application :
 
+Go into the folder called 
 
+```
+cd KnxChenillard/src/ChenillardIotOfficialSolution
+```
 
+Open visual studio 
+
+Import the ChenillardIotOfficialSolution.sln file
+
+Run the code.
+
+The main files : 
+1 - Program.cs
+2 - Chenillard.cs
+3 - Controls.cs
 
