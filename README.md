@@ -11,18 +11,89 @@ https://github.com/lifeemotions/knx.net
 
 ## Maquette Address :
 
-The Ip Addresses is  : 192.168.0.5 for maquette 1
-						192.168.0.6 for maquette 2
-						192.168.0.4 for maquette 3
+The Ip Addresses is  : 192.168.1.5 for maquette 1
+						192.168.1.10 for maquette 2
+						
 
 
 Group Addresses Lamps: 0/1/1 (lampe1); 0/1/2 (lampe2); 0/1/3 (lampe3); 0/1/4(lampe4)
 Group Addresses Buttons : 0/3/1 (button1); 0/3/2 (button2); 0/3/3 (button3); 0/3/4 (button4)
 
-## Comment démarrer le serveur 
-Installer Visual studio
-Importer le projet 
-depuis visual Studio, lancer le projet avec IIS.
+
+## How to use the project :
+
+### for the low level application : 
+
+clone the repository
+
+```
+git clone https://github.com/Darchevil/KnxChenillard.git
+```
+
+go into the folder ChenillardIotOfficialSolution
+
+```
+cd KnxChenillard/src/ChenillardIotOfficialSolution
+```
+
+to launch the executable, go into the following folder : 
+```
+cd KnxChenillard\src\ChenillardIotOfficialSolution\ChenillardIotOfficial\bin\Debug
+
+```
+then 
+```
+ChenillardIotOfficial.exe
+```
+
+### for the server 
+ clone the repository
+
+clone the repository
+
+```
+git clone https://github.com/Darchevil/KnxChenillard.git
+```
+
+go into the folder ChenillardIotOfficialSolution
+
+```
+cd KnxChenillard/src/Server/ChenillardWebAppSolution
+```
+
+Open Visual Studio and import the ChenillardWebAppSolution.sln file
+
+Run the server by running the code with IIS
+
+### Run the client 
+
+Prerequired
+
+Install angular 
+
+```
+npm install angular
+```
+
+clone the repository
+
+```
+git clone https://github.com/Darchevil/KnxChenillard.git
+```
+
+go into the ClientAngular folder
+
+```
+cd KnxChenillard/ClientAngular/chenillard-client
+```
+
+run the client
+
+```
+ng serve --open
+```
+
+
 
 
 
