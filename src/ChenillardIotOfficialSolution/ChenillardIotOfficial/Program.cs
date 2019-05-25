@@ -30,6 +30,7 @@ namespace ChenillardIotOfficial
                       [C] : stop chenillard
                       [S] : Choose Speed 
                       [O] : Change Order 
+                      [Q] : Quit
                       Actual speed : " + chenillard.speed);
 
                 command = Console.ReadLine();
@@ -110,7 +111,7 @@ namespace ChenillardIotOfficial
     public static KnxConnectionTunneling connectToChenillard()
     {
         Console.WriteLine("Connecting...");
-        var connection = new KnxConnectionTunneling("192.168.0.5", 3671, "192.168.0.100", 3671); //Connection à la maquette. L'adresse de la maquette est "192.168.0.5". Le port par défaut est 3671
+        var connection = new KnxConnectionTunneling("192.168.1.10", 3671, "192.168.1.102", 3671); //Connection à la maquette. L'adresse de la maquette est "192.168.0.5". Le port par défaut est 3671
         connection.Connect();
         connection.KnxEventDelegate += Event;
         Console.WriteLine("Connected To the KNX");
