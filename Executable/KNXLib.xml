@@ -1,0 +1,367 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>KNXLib</name>
+    </assembly>
+    <members>
+        <member name="T:KNXLib.Log.Logger">
+            <summary>
+            </summary>
+        </member>
+        <member name="T:KNXLib.Log.Logger.DebugEvent">
+            <summary>
+            </summary>
+            <param name="id"></param>
+            <param name="message"></param>
+        </member>
+        <member name="F:KNXLib.Log.Logger.DebugEventEndpoint">
+            <summary>
+            </summary>
+        </member>
+        <member name="T:KNXLib.Log.Logger.InfoEvent">
+            <summary>
+            </summary>
+            <param name="id"></param>
+            <param name="message"></param>
+        </member>
+        <member name="F:KNXLib.Log.Logger.InfoEventEndpoint">
+            <summary>
+            </summary>
+        </member>
+        <member name="T:KNXLib.Log.Logger.WarnEvent">
+            <summary>
+            </summary>
+            <param name="id"></param>
+            <param name="message"></param>
+        </member>
+        <member name="F:KNXLib.Log.Logger.WarnEventEndpoint">
+            <summary>
+            </summary>
+        </member>
+        <member name="T:KNXLib.Log.Logger.ErrorEvent">
+            <summary>
+            </summary>
+            <param name="id"></param>
+            <param name="message"></param>
+        </member>
+        <member name="F:KNXLib.Log.Logger.ErrorEventEndpoint">
+            <summary>
+            </summary>
+        </member>
+        <member name="T:KNXLib.KnxConnectionTunneling">
+            <summary>
+                Class that controls a Tunneling KNX connection, a tunneling connection is UDP based and has state.
+                This class will connect to the remote gateway provided and create an endpoint for the remote gateway
+                to connect back
+            </summary>
+        </member>
+        <member name="M:KNXLib.KnxConnectionTunneling.#ctor(System.String,System.Int32,System.String,System.Int32)">
+            <summary>
+                Initializes a new KNX tunneling connection with provided values. Make sure the local system allows
+                UDP messages to the localIpAddress and localPort provided
+            </summary>
+            <param name="remoteIpAddress">Remote gateway IP address</param>
+            <param name="remotePort">Remote gateway port</param>
+            <param name="localIpAddress">Local IP address to bind to</param>
+            <param name="localPort">Local port to bind to</param>
+        </member>
+        <member name="M:KNXLib.KnxConnectionTunneling.Connect">
+            <summary>
+                Start the connection
+            </summary>
+        </member>
+        <member name="M:KNXLib.KnxConnectionTunneling.Disconnect">
+            <summary>
+                Stop the connection
+            </summary>
+        </member>
+        <member name="T:KNXLib.Exceptions.InvalidKnxDataException">
+            <summary>
+            Exception is thrown when invalid data has been provided to an action method
+            </summary>
+        </member>
+        <member name="M:KNXLib.Exceptions.InvalidKnxDataException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the InvalidKnxDataException class.
+            </summary>
+            <param name="data"></param>
+        </member>
+        <member name="M:KNXLib.Exceptions.InvalidKnxDataException.ToString">
+            <summary>
+            Creates and returns a string representation of the current exception.
+            </summary>
+            <returns>
+            A string representation of the current exception.
+            </returns>
+        </member>
+        <member name="T:KNXLib.Exceptions.InvalidKnxAddressException">
+            <summary>
+            Exception thrown when an invalid KNX address is used to perform an action or status query
+            </summary>
+        </member>
+        <member name="M:KNXLib.Exceptions.InvalidKnxAddressException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the InvalidKnxAddressException class.
+            </summary>
+            <param name="address"></param>
+        </member>
+        <member name="M:KNXLib.Exceptions.InvalidKnxAddressException.ToString">
+            <summary>
+            Creates and returns a string representation of the current exception.
+            </summary>
+            <returns>
+            A string representation of the current exception.
+            </returns>
+        </member>
+        <member name="T:KNXLib.Exceptions.InvalidHostException">
+            <summary>
+            Exception thrown when trying to connect to an invalid host
+            </summary>
+        </member>
+        <member name="M:KNXLib.Exceptions.InvalidHostException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the InvalidHostException class
+            </summary>
+            <param name="host"></param>
+        </member>
+        <member name="M:KNXLib.Exceptions.InvalidHostException.ToString">
+            <summary>
+            Creates and returns a string representation of the current exception.
+            </summary>
+            <returns>
+            A string representation of the current exception.
+            </returns>
+        </member>
+        <member name="T:KNXLib.KnxConnectionRouting">
+            <summary>
+                Class that controls a Routing KNX connection, a routing connection is UDP based and has no state.
+                This class will bind to a multicast address to listen for events and send actions and requests to
+                that same address
+            </summary>
+        </member>
+        <member name="M:KNXLib.KnxConnectionRouting.#ctor">
+            <summary>
+                Initializes a new KNX routing connection with default values. The default multicast address is
+                224.0.23.12 and the default port is 3671. Make sure the local system allows UDP messages to this port
+            </summary>
+        </member>
+        <member name="M:KNXLib.KnxConnectionRouting.#ctor(System.Int32)">
+            <summary>
+                Initializes a new KNX routing connection with default address and provided port. The default multicast
+                address is 224.0.23.12. Make sure the local system allows UDP messages to the provided port
+            </summary>
+            <param name="port">UDP port to send/receive KNX messages</param>
+        </member>
+        <member name="M:KNXLib.KnxConnectionRouting.#ctor(System.String)">
+            <summary>
+                Initializes a new KNX routing connection with provided address and default port. The default port is
+                3671. Make sure the local system allows UDP messages to this port
+            </summary>
+            <param name="host">UDP multicast address to send/receive KNX messages</param>
+        </member>
+        <member name="M:KNXLib.KnxConnectionRouting.#ctor(System.String,System.Int32)">
+            <summary>
+                Initializes a new KNX routing connection with provided address and port. Make sure the local system
+                allows UDP messages to the provided port
+            </summary>
+            <param name="host">UDP multicast address to send/receive KNX messages</param>
+            <param name="port">UDP port to send/receive KNX messages</param>
+        </member>
+        <member name="M:KNXLib.KnxConnectionRouting.Connect">
+            <summary>
+                Start the connection
+            </summary>
+        </member>
+        <member name="M:KNXLib.KnxConnectionRouting.Disconnect">
+            <summary>
+                Stop the connection
+            </summary>
+        </member>
+        <member name="T:KNXLib.KnxConnection">
+            <summary>
+                Base class that controls the KNX connection, implemented by KnxConnectionRouting and KnxConnetionTunneling
+            </summary>
+        </member>
+        <member name="T:KNXLib.KnxConnection.KnxConnected">
+            <summary>
+                Delegate function for connection established trigger
+            </summary>
+        </member>
+        <member name="F:KNXLib.KnxConnection.KnxConnectedDelegate">
+            <summary>
+                Event triggered when connection is established
+            </summary>
+        </member>
+        <member name="T:KNXLib.KnxConnection.KnxDisconnected">
+            <summary>
+                Delegate function for disconnection trigger
+            </summary>
+        </member>
+        <member name="F:KNXLib.KnxConnection.KnxDisconnectedDelegate">
+            <summary>
+                Event triggered when connection drops
+            </summary>
+        </member>
+        <member name="T:KNXLib.KnxConnection.KnxEvent">
+            <summary>
+                Delegate function for KNX events
+            </summary>
+            <param name="address"></param>
+            <param name="state"></param>
+        </member>
+        <member name="F:KNXLib.KnxConnection.KnxEventDelegate">
+            <summary>
+                Event triggered when there is a new KNX event
+            </summary>
+        </member>
+        <member name="T:KNXLib.KnxConnection.KnxStatus">
+            <summary>
+                Delegate function for KNX status queries
+            </summary>
+            <param name="address"></param>
+            <param name="state"></param>
+        </member>
+        <member name="F:KNXLib.KnxConnection.KnxStatusDelegate">
+            <summary>
+                Event triggered when received a status after a query
+            </summary>
+        </member>
+        <member name="M:KNXLib.KnxConnection.#ctor(System.String,System.Int32)">
+            <summary>
+                Create a new KNX Connection to specified host and port
+            </summary>
+            <param name="host">Host to connect</param>
+            <param name="port">Port to use</param>
+        </member>
+        <member name="P:KNXLib.KnxConnection.RemoteEndpoint">
+            <summary>
+                Get the IPEndPoint instance representing the remote KNX gateway
+            </summary>
+        </member>
+        <member name="P:KNXLib.KnxConnection.ThreeLevelGroupAddressing">
+            <summary>
+                Configure this paramenter based on the KNX installation:
+                - true: 3-level group address: main/middle/sub(5/3/8 bits)
+                - false: 2-level group address: main/sub (5/11 bits)
+                Default: true
+            </summary>
+        </member>
+        <member name="P:KNXLib.KnxConnection.Debug">
+            <summary>
+                Set to true to receive debug log messages
+            </summary>
+        </member>
+        <member name="P:KNXLib.KnxConnection.ActionMessageCode">
+            <summary>
+                Some KNX Routers/Interfaces might need this parameter defined, some need this to be 0x29.
+                Default: 0x00
+            </summary>
+        </member>
+        <member name="M:KNXLib.KnxConnection.Connect">
+            <summary>
+                Start the connection
+            </summary>
+        </member>
+        <member name="M:KNXLib.KnxConnection.Disconnect">
+            <summary>
+                Stop the connection
+            </summary>
+        </member>
+        <member name="M:KNXLib.KnxConnection.Connected">
+            <summary>
+                Event triggered by implementing class to notify that the connection has been established
+            </summary>
+        </member>
+        <member name="M:KNXLib.KnxConnection.Disconnected">
+            <summary>
+                Event triggered by implementing class to notify that the connection has been established
+            </summary>
+        </member>
+        <member name="M:KNXLib.KnxConnection.SetLockIntervalMs(System.Int32)">
+            <summary>
+                Set the lock interval between requests sent to the network (in ms)
+            </summary>
+            <param name="interval">time in ms for the interval</param>
+        </member>
+        <member name="M:KNXLib.KnxConnection.Action(System.String,System.Boolean)">
+            <summary>
+                Send a bit value as data to specified address
+            </summary>
+            <param name="address">KNX Address</param>
+            <param name="data">Bit value</param>
+            <exception cref="T:KNXLib.Exceptions.InvalidKnxDataException"></exception>
+        </member>
+        <member name="M:KNXLib.KnxConnection.Action(System.String,System.String)">
+            <summary>
+                Send a string value as data to specified address
+            </summary>
+            <param name="address">KNX Address</param>
+            <param name="data">String value</param>
+            <exception cref="T:KNXLib.Exceptions.InvalidKnxDataException"></exception>
+        </member>
+        <member name="M:KNXLib.KnxConnection.Action(System.String,System.Int32)">
+            <summary>
+                Send an int value as data to specified address
+            </summary>
+            <param name="address">KNX Address</param>
+            <param name="data">Int value</param>
+            <exception cref="T:KNXLib.Exceptions.InvalidKnxDataException"></exception>
+        </member>
+        <member name="M:KNXLib.KnxConnection.Action(System.String,System.Byte)">
+            <summary>
+                Send a byte value as data to specified address
+            </summary>
+            <param name="address">KNX Address</param>
+            <param name="data">byte value</param>
+        </member>
+        <member name="M:KNXLib.KnxConnection.Action(System.String,System.Byte[])">
+            <summary>
+                Send a byte array value as data to specified address
+            </summary>
+            <param name="address">KNX Address</param>
+            <param name="data">Byte array value</param>
+        </member>
+        <member name="M:KNXLib.KnxConnection.RequestStatus(System.String)">
+            <summary>
+                Send a request to KNX asking for specified address current status
+            </summary>
+            <param name="address"></param>
+        </member>
+        <member name="M:KNXLib.KnxConnection.FromDataPoint(System.String,System.String)">
+            <summary>
+                Convert a value received from KNX using datapoint translator, e.g.,
+                get a temperature value in Celsius
+            </summary>
+            <param name="type">Datapoint type, e.g.: 9.001</param>
+            <param name="data">Data to convert</param>
+            <returns></returns>
+        </member>
+        <member name="M:KNXLib.KnxConnection.FromDataPoint(System.String,System.Byte[])">
+            <summary>
+                Convert a value received from KNX using datapoint translator, e.g.,
+                get a temperature value in Celsius
+            </summary>
+            <param name="type">Datapoint type, e.g.: 9.001</param>
+            <param name="data">Data to convert</param>
+            <returns></returns>
+        </member>
+        <member name="M:KNXLib.KnxConnection.ToDataPoint(System.String,System.String)">
+            <summary>
+                Convert a value to send to KNX using datapoint translator, e.g.,
+                get a temperature value in Celsius in a byte representation
+            </summary>
+            <param name="type">Datapoint type, e.g.: 9.001</param>
+            <param name="value">Value to convert</param>
+            <returns></returns>
+        </member>
+        <member name="M:KNXLib.KnxConnection.ToDataPoint(System.String,System.Object)">
+            <summary>
+                Convert a value to send to KNX using datapoint translator, e.g.,
+                get a temperature value in Celsius in a byte representation
+            </summary>
+            <param name="type">Datapoint type, e.g.: 9.001</param>
+            <param name="value">Value to convert</param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>
